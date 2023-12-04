@@ -16,26 +16,32 @@ class Solution:
     """
     def lowestCommonAncestor(self, root, A, B):
         # write your code here
+        """
+        Case 1: if both A and B exist, return lowestCommonAncestor
+        Case 2: if only A exist, return A
+        Case 3: if only B exists, return B
+        Case 4 if neither A nor B exists, return None
+        """
         if not root:
             return
         
-        # case 2: either A or B is the root of the tree or the same subtree, we will just return the root
+        # case 1: either A or B is the root of the tree or the same subtree, we will just return the root
         if root == A or root == B:
             return root
-
+        # case 1 cont.: if both A and B exist, return lowestCommonAncestor
         left = self.lowestCommonAncestor(root.left, A, B)
         right = self.lowestCommonAncestor(root.right, A, B)
 
-        # case 1
+        # case 1 cont.:
         if left and right:
             return root
 
         # at this point, left and right can't be both non-null since we checked above
-        # case 4 and 5, report target node or LCA back to parent
+        # case 2 and 3, report target node or LCA back to parent
         if left:
             return left
         if right:
             return right
 
-        # case 3, not found return null
+        # case 4, not found return null
         return None
