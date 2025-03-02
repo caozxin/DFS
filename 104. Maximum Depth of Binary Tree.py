@@ -11,7 +11,7 @@ class Solution:
 
         def dfs(node, depth):
             
-            if node is None:
+            if node is None: # here return values from child to parent. 
                 max_dep[0] = max(max_dep[0], depth) # max_dep needs to be updated here. also note that depth is local here. 
                 return  # once it reaches the end, it will just retun to previous level.
             
