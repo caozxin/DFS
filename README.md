@@ -6,4 +6,5 @@
 
 We have two recursive calls dfs(root.left) and dfs(root.right), and we return based on the results from the recursive calls. This is also a divide and conquer algorithm. **
 
-![image](https://github.com/user-attachments/assets/fb234c4c-b343-4261-b43c-6e5462511fd3)
+![image](https://github.com/user-attachments/assets/f6e36491-3c7e-4a3b-b611-4e8acfa1ca9c)
+
