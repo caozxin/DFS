@@ -20,8 +20,8 @@ class Solution:
         def dfs (node):
 
             if node is None:
-                height = 0
-                return height
+                # height = 0
+                return 0
 
             left_height = dfs(node.left)
             right_height = dfs(node.right)
