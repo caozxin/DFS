@@ -11,3 +11,9 @@ We have two recursive calls dfs(root.left) and dfs(root.right), and we return ba
 
 ![image](https://github.com/user-attachments/assets/f6e36491-3c7e-4a3b-b611-4e8acfa1ca9c)
 
+        # recursion:
+            #base case: if node is None
+            # recursive call + what to return --> in this case, rreturn current subtree of its parent.
+
+        # return value: return current subtree of its parent.
+        # identify states: none?
