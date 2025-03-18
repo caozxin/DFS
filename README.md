@@ -13,7 +13,7 @@ We have two recursive calls dfs(root.left) and dfs(root.right), and we return ba
 
         # recursion:
                 #base case: if node is None
-                # recursive call + what to return --> in this case, rreturn current subtree of its parent.
+                # recursive call + what to return --> in this case, return current subtree of its parent.
         # dfs:
                 # identify states: passing states from parent to child. 
                 # return value: return current subtree of its parent, from child to parent. 
