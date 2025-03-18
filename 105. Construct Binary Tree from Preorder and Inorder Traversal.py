@@ -14,5 +14,7 @@ class Solution:
         # identify states: pass the current state of the Tree, from parent to child
         # return value: return the Tree
 
+#TODO: The key approach is to use the preorder array to identify the root, and the inorder array to identify the left and right subtrees.
+
 
 
