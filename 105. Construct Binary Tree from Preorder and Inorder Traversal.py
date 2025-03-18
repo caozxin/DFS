@@ -23,39 +23,33 @@ class Solution:
 #     if not root, we then use in-order hashmap for left_or_right();
 #     construct the tree as we go.
 
-        def contruct(node, next_val):
-            if not node:
-                return node
 
-            if in_idx[next_val] < in_idx[node.val]:
-                node.left =  TreeNode(val =next_val)
-
-            else:
-                node.right = TreeNode(val =next_val)
-
-            print("new node: ", node)
-            # return node
-            
-
-        p_idx = {}
-        in_idx = {}
-
-        for indx, val in enumerate(preorder):
-            # print(val, indx)
-            p_idx[val] = indx
-        print(p_idx)
-
-        for indx, val in enumerate(inorder):
-            # print(val, indx)
-            in_idx[val] = indx
-        print(in_idx)
-
-        res_node = TreeNode(val =preorder[0])
-        print(res_node, in_idx[res_node.val]) #everything before in_idx = 1 is left child
-
-        for each_val in preorder[1:]:
-            print(each_val)
-            contruct(res_node, each_val)
-            # exit()
-
+        if not preorder or not inorder:
+            return None
         
+        # Create an inorder index map for quick lookups
+        in_idx = {val: idx for idx, val in enumerate(inorder)}
+        
+        # Define a helper function for recursion
+        def helper(pre_left, pre_right, in_left, in_right):
+            if pre_left > pre_right or in_left > in_right:
+                return None
+
+            # Select root from preorder
+            root_val = preorder[pre_left]
+            root = TreeNode(root_val)
+
+            # Find index of root in inorder traversal
+            root_index = in_idx[root_val]
+
+            # Count nodes in left subtree
+            left_size = root_index - in_left
+
+            # Recursively construct left and right subtrees
+            root.left = helper(pre_left + 1, pre_left + left_size, in_left, root_index - 1)
+            root.right = helper(pre_left + left_size + 1, pre_right, root_index + 1, in_right)
+
+            return root
+
+        # Call helper function with full range of preorder and inorder
+        return helper(0, len(preorder) - 1, 0, len(inorder) - 1)
