@@ -50,3 +50,21 @@ class Solution:
         print('total[0] ', total[0] + 1)
         return max_dep[0]
         # return total[0] + 1
+
+### update 06/01/2026:
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        
+        if root:
+            print(root.val)
+
+            if root.left:
+                self.maxDepth(root.left)
+            else:
+                self.maxDepth(root.right)
