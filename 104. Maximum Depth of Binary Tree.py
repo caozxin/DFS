@@ -61,10 +61,24 @@ class Solution:
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         
-        if root:
-            print(root.val)
+        self.max_depth = 0
+        if not root:
+            return 0
 
-            if root.left:
-                self.maxDepth(root.left)
-            else:
-                self.maxDepth(root.right)
+        # val = [] # list could be accessed without declaring it as global
+        # depth = 0
+        def dfs(curr_node: Optional[TreeNode], depth):
+
+            if not curr_node:
+                return depth
+
+            # val.append(curr_node.val)
+            depth += 1
+            self.max_depth = max(self.max_depth, depth)
+            print(curr_node.val, depth)
+            dfs(curr_node.left, depth)
+            dfs(curr_node.right, depth)
+
+        dfs(root, 0)
+        print(self.max_depth)
+        return self.max_depth
