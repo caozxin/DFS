@@ -82,3 +82,19 @@ class Solution:
         dfs(root, 0)
         print(self.max_depth)
         return self.max_depth
+
+
+### update 06/02/2026 a better approach:
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+
+        def dfs(node):
+            if not node:
+                return 0
+
+            left = dfs(node.left)
+            right = dfs(node.right)
+
+            return 1 + max(left, right)
+
+        return dfs(root)
