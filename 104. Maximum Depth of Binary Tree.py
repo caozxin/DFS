@@ -98,3 +98,28 @@ class Solution:
             return 1 + max(left, right)
 
         return dfs(root)
+
+### update 06/10/26: 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        
+        self.maxdepth = 0
+
+        def dfs(root, depth):
+            if not root:
+                return 
+
+            self.maxdepth = max(self.maxdepth, depth)
+            print(root.val, depth, self.maxdepth)
+
+            dfs(root.left, depth + 1) # depth should increase when you go down a level and decrease when you backtrack.
+            dfs(root.right, depth + 1)
+            
+        dfs(root, 1)
+        return self.maxdepth
