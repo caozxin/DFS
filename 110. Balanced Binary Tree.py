@@ -36,3 +36,42 @@ class Solution:
 
         
         return True if dfs(root) != -1 else False
+
+
+### update 06/10/2026:
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isBalanced(self, root: Optional[TreeNode]) -> bool:
+        
+        # height-balanced: the diff between depths of two subtree from the same node <= 1
+        # so this question ask to calculate the depth of any two subtree, and then count the diff
+        # then how to calculate the depth of 1 subtree?
+        if not root:
+            return True
+
+        def calcDepth(root, depth):
+            if not root:
+                return depth
+
+            depth += 1 # we add the depth at the parent level
+            # print(root.val, depth)
+            return max(calcDepth(root.left, depth), calcDepth(root.right, depth)) # return the max depth between left and right subtree
+            # 
+
+        def dfs(root):
+        # return calcDepth(root, 0)
+            if not root:
+                return True 
+            # print(root, calcDepth(root, 0))
+            if abs(calcDepth(root.left, 0) - calcDepth(root.right, 0)) > 1:
+                print('false')
+                return False
+            return dfs(root.left) and dfs(root.right)
+
+        maxDepth = calcDepth(root, 0)
+        return dfs(root)
